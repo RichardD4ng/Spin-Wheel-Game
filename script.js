@@ -1,7 +1,7 @@
 // Wheel configuration
 const segments = [
     { label: 'Xm6', displayLabel: 'Xm6', color: '#ff6b6b' },
-    { label: 'We go on a date', displayLabel: 'Date', color: '#4ecdc4' }
+    { label: 'I guess we are going on a date', displayLabel: 'Date', color: '#4ecdc4' }
 ];
 const wheelCanvas = document.getElementById('wheelCanvas');
 const ctx = wheelCanvas.getContext('2d');
@@ -64,12 +64,12 @@ function spinWheel() {
     let winnerIndex;
     if (spinCount < 2) {
         // First two spins always land on date
-        winnerIndex = segments.findIndex(segment => segment.label === 'We go on a date');
+        winnerIndex = segments.findIndex(segment => segment.label === 'I guess we are going on a date');
     } else {
         // After two spins, 50/50 chance
         winnerIndex = Math.random() < 0.5 ? 
-            segments.findIndex(segment => segment.label === ':( Xm6') :
-            segments.findIndex(segment => segment.label === 'I guess we going on a date');
+            segments.findIndex(segment => segment.label === 'Xm6') :
+            segments.findIndex(segment => segment.label === 'I guess we are going on a date');
     }
     
     spinCount++; // Increment spin count
@@ -96,7 +96,7 @@ function spinWheel() {
             currentAngle = endAngle % 360;
             isSpinning = false;
             spinBtn.disabled = false;
-            result.textContent = `${segments[winnerIndex].label}!`;
+            result.textContent = `${segments[winnerIndex].label}`;
         }
     }
     requestAnimationFrame(animate);
